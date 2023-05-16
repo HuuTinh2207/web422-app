@@ -5,7 +5,7 @@
 *  (including web sites) or distributed to other students.
 * 
 *  Name: Huu Tinh Luu Student ID: 152712196 Date: 5/16/2023
-*  Cyclic Link: 
+*  Cyclic Link: https://good-teal-millipede-garb.cyclic.app/
 *
 ********************************************************************************/ 
 
@@ -70,12 +70,12 @@ app.delete("/api/movies/:id", (req, res) => {
         });
 })
 
-// ========== PAGE NOT FOUND ==========
+
 app.use((req, res) => {
     res.status(404).sendFile(__dirname + "/404.html");
 });
 
-// Tell the app to start listening for requests if the connection with database is successful
+
 db.initialize("mongodb+srv://admin:admin@cluster0.hwvtp1a.mongodb.net/sample_mflix?retryWrites=true&w=majority")
     .then(() => {
         app.listen(HTTP_PORT, () => {
