@@ -11,7 +11,7 @@
 
 const express = require('express');
 const cors = require('cors');
-require('dotenv').config();
+require('dotenv').config({ path: "./index.env" });
 const MoviesDB = require("./modules/moviesDB.js");
 const db = new MoviesDB();
 
@@ -76,7 +76,7 @@ app.use((req, res) => {
 });
 
 
-db.initialize("mongodb+srv://admin:admin@cluster0.hwvtp1a.mongodb.net/sample_mflix?retryWrites=true&w=majority")
+db.initialize(process.env.MONGODB_CONN_STRING)
     .then(() => {
         app.listen(HTTP_PORT, () => {
             console.log(`server listening on: ${HTTP_PORT}`);
