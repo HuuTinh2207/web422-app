@@ -36,6 +36,17 @@ app.post("/api/movies", (req, res) => {
         })
 })
 
+app.get("/api/movies", (req, res) => {
+    const { page, perPage, title } = req.query;
+    db.getAllMovies(page, perPage, title)  
+        .then((movies) => {
+            res.status(201).json(movies);
+        })
+        .catch((err) => {
+            res.status(500).json({ error: err });
+        });
+})
+
 app.get("/api/movies/:id", (req, res) => {
     const { id } = req.params;
     db.getMovieById(id)
